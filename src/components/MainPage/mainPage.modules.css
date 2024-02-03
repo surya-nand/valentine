@@ -1,0 +1,55 @@
+.main-page{
+    width: 100vw;
+    height: 100vh;
+
+}
+.boy-girl-gifs{
+    margin-bottom: 3%;
+}
+
+
+.main-page p{
+    font-family: Poppins;
+    font-size: calc(1.4vw + 1vh);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: bisque;
+}
+.yes-no-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.yes-button,.no-button{
+    min-width: 4vw;
+    min-height: 5vh;
+    border-radius: 1vh;
+    font-family: Poppins;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: none;
+    margin-bottom: 4px;
+
+    
+}
+.yes-button{
+    background-color: #0cae1d;
+    color: aliceblue;
+}
+.no-button{
+    font-size: 1.5vw;
+}
+
+.celebrations-message{
+    font-family: Poppins;
+    font-size: calc(2vw + 1vh);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: rgb(255, 255, 255);
+}
+
+

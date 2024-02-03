@@ -3,7 +3,8 @@ import ColorPicker from "../colorPicker";
 import "../HomePage/homePage.modules.css";
 import axios from "axios";
 const BASE_URL = "https://valentine-ybw3.onrender.com";
-const client_URL = "https://valentine-rexp.vercel.app";
+// const client_URL = "https://valentine-rexp.vercel.app";
+const client_URL = "http://localhost:3000";
 
 function HomePage() {
   const [valentineDetails, setValentineDetails] = useState({
@@ -18,7 +19,6 @@ function HomePage() {
   const [showCustomLink, setShowCustomLink] = useState(false);
 
   const colorPickerRef = useRef(null);
-  console.log(customLink);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -42,6 +42,17 @@ function HomePage() {
   const handleThemeButtonClick = (e) => {
     e.preventDefault();
     setSelectThemeOpen((prev) => !prev);
+  };
+
+  const handleCopyToClipboard = (linkToQuiz) => {
+    navigator.clipboard.writeText(linkToQuiz).then(
+      () => {
+        window.alert("Link copied to clipboard!");
+      },
+      (err) => {
+        console.error("Failed to copy link to clipboard", err);
+      }
+    );
   };
 
   const handleValentineDetailsInputChange = (event) => {
@@ -137,7 +148,7 @@ function HomePage() {
       {showCustomLink && (
         <div className="custom-link-container">
           <p>{customLink}</p>
-          <h1>Copy Link</h1>
+          <h1 onClick ={() => handleCopyToClipboard(customLink)}>Copy Link</h1>
         </div>
       )}
     </div>
