@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import ColorPicker from "../colorPicker";
 import "../HomePage/homePage.modules.css";
 import axios from "axios";
-const BASE_URL = "http://localhost:5000";
-const client_URL = "";
+const BASE_URL = "https://valentine-ybw3.onrender.com";
+const client_URL = "https://valentine-rexp.vercel.app";
 
 function HomePage() {
   const [valentineDetails, setValentineDetails] = useState({
@@ -12,10 +12,10 @@ function HomePage() {
     pickupLine: "",
   });
 
-  const [customLink, setCustomLink] = useState("hello there");
+  const [customLink, setCustomLink] = useState("");
 
   const [selectThemeOpen, setSelectThemeOpen] = useState(false);
-  const [showCustomLink, setShowCustomLink] = useState(true);
+  const [showCustomLink, setShowCustomLink] = useState(false);
 
   const colorPickerRef = useRef(null);
   console.log(customLink);
@@ -137,6 +137,7 @@ function HomePage() {
       {showCustomLink && (
         <div className="custom-link-container">
           <p>{customLink}</p>
+          <h1>Copy Link</h1>
         </div>
       )}
     </div>
