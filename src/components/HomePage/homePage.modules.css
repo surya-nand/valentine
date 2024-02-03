@@ -1,0 +1,124 @@
+.homepage-component {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://images.pexels.com/photos/607013/pexels-photo-607013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: center;
+}
+.homepage {
+  min-width: 70vw;
+  min-height: 60vh;
+  background-color: rgb(233, 233, 233);
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.valentine-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.valentine-name,
+.valentine-page-theme,
+.valentine-pickup-line {
+  width: 50vw;
+  height: 6.5vh;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
+  background: #cddddd;
+  border: none;
+  font-family: Poppins;
+  font-size: calc(1.4vw + 1vh);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding-left: 2%;
+  margin-bottom: 4%;
+}
+.submit-details-button,
+.theme-details-button {
+  border-radius: 1vh;
+  background: #a9bcff;
+  border: none;
+  width: 30%;
+  height: 5vh;
+  flex-shrink: 0;
+  margin-top: min(calc(1vw + 0.6vh), 58px);
+  color: #474444;
+  font-family: Poppins;
+  font-size: calc(1vw + 0.5vh);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.theme-details-button {
+  background-color: rgb(238, 197, 234);
+}
+
+.submit-details-button:hover,
+.theme-details-button:hover {
+  color: #ffff;
+  background: rgb(132, 156, 244);
+}
+.valentine-page-theme {
+  margin-bottom: 5%;
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.color-picker-container {
+  position: absolute;
+  top: 0;
+  min-width: 30vw;
+  min-height: 100vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-link-container {
+  position: absolute;
+  top: 0;
+  min-width: 30vw;
+  min-height: 100vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-link-container p {
+  border-radius: 1vh;
+  background: #a9bcff;
+  border: none;
+  min-width: 30vw;
+  height: 5vh;
+  flex-shrink: 0;
+  margin-top: min(calc(1vw + 0.6vh), 58px);
+  color: #474444;
+  font-family: Poppins;
+  font-size: calc(1vw + 0.5vh);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
