@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import "../MainPage/mainPage.modules.css";
 import ilayarajaAudio from "../../Assets/ilayaraja.mp3";
+import laugh from "../../Assets/laugh.mp3";
 import githubLogo from '../../Assets/github-mark-white.png'
 const BASE_URL = "https://valentine-ybw3.onrender.com";
 
@@ -19,6 +20,7 @@ function MainPage() {
   const [YesClicked, setYesClicked] = useState(false);
   const [audioPlayed, setAudioPlayed] = useState(false);
   const [currentNoPhraseIndex, setCurrentNoPhraseIndex] = useState(0);
+  const noAudioRef = useState(null);
   const noPhrases = [
     "No",
     "Reconsider? My dog thinks you should",
@@ -42,11 +44,19 @@ function MainPage() {
         .catch((error) => console.error("Error playing audio:", error));
 
       setAudioPlayed((prev) => !prev);
+      noAudioRef.current = audio;
     }
   };
 
   const handleYesButton = () => {
     setYesClicked(true);
+    if(noAudioRef.current){
+        noAudioRef.current.pause();
+        noAudioRef.current.currentTime =0;
+    }
+    const yesAudio = new Audio(laugh);
+    yesAudio.volume = 0.5;
+    yesAudio.play().catch((error) => console.log("Error playing laugh"))
   };
 
   const handleNewInvite = (event) => {
@@ -88,6 +98,7 @@ function MainPage() {
                 <img
                   className="love-bunny"
                   src={"https://media.tenor.com/bVN5MdTrelYAAAAj/yaseen1.gif"}
+                  alt="left-bunny"
                 ></img>
               </div>
               <div>
@@ -121,12 +132,14 @@ function MainPage() {
                   src={
                     "https://media.tenor.com/vZZEPrwfe6AAAAAj/happy-amine.gif"
                   }
+                  alt="left-bunny"
                 ></img>
                 <img
                   className="right-bunny"
                   src={
                     "https://media.tenor.com/_mHPg-YIxFEAAAAj/love-you-cute-girl.gif"
                   }
+                  alt="right-bunny"
                 ></img>
                 <p>Will you be my valentine {userDetails.name}?</p>
                 <p>{userDetails.pickupLine}</p>

@@ -37,9 +37,11 @@
 .yes-button{
     background-color: #0cae1d;
     color: aliceblue;
+    cursor: pointer;
 }
 .no-button{
     font-size: 1.5vw;
+    cursor: pointer;
 }
 
 .celebrations-message{
