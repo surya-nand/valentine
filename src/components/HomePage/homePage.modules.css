@@ -2,11 +2,22 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
   background-image: url(https://images.pexels.com/photos/607013/pexels-photo-607013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-size: cover;
   background-position: center;
+}
+.homepage-component h1{
+  color: #543b3b;
+  font-family: Jomhuria;
+  font-size: max(calc(5vw + 3vh), 100px);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 .homepage {
   min-width: 70vw;
@@ -134,7 +145,7 @@
   align-items: center;
   color: #ffff;
   width: 10%;
-  margin-left: 5%;
+  margin-left: 9%;
   white-space: nowrap;
   cursor: pointer;
 

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import "../MainPage/mainPage.modules.css";
 import ilayarajaAudio from "../../Assets/ilayaraja.mp3";
+import githubLogo from '../../Assets/github-mark-white.png'
 const BASE_URL = "https://valentine-ybw3.onrender.com";
 
 function MainPage() {
+  const navigate = useNavigate();
   const { userId } = useParams();
   const [invalidLink, setInvalidLink] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -28,7 +31,7 @@ function MainPage() {
   const handleNoButton = (event) => {
     event.preventDefault();
     setImgMarginRight((prev) => Math.max(prev - 10, 0));
-    setYesButtonSize((prev) => Math.min(prev * 1.5, 13));
+    setYesButtonSize((prev) =>(prev * 1.5));
     const nextIndex = (currentNoPhraseIndex + 1) % noPhrases.length;
     setCurrentNoPhraseIndex(nextIndex);
     if (!audioPlayed) {
@@ -45,6 +48,11 @@ function MainPage() {
   const handleYesButton = () => {
     setYesClicked(true);
   };
+
+  const handleNewInvite = (event) => {
+    event.preventDefault()
+    navigate('/')
+  }
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -86,6 +94,22 @@ function MainPage() {
                 <h1 className="celebrations-message">
                   Let's create some memories
                 </h1>
+              </div>
+              <div>
+                <h2 className="create-new-invite" onClick={handleNewInvite}>
+                  create new invite
+                </h2>
+                <a
+                  href="https://github.com/surya-nand"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="github-logo"
+                    src={githubLogo}
+                    alt="github-logo"
+                  ></img>
+                </a>
               </div>
             </>
           ) : (

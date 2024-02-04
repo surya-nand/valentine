@@ -32,7 +32,6 @@
     padding-right: 2%;
     border: none;
     margin-bottom: 4px;
-
     
 }
 .yes-button{
@@ -50,6 +49,48 @@
     font-weight: 600;
     line-height: normal;
     color: rgb(255, 255, 255);
+}
+.create-new-invite{
+    margin-top: 10%;
+    font-family: Poppins;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: rgb(110, 74, 74);
+    cursor: pointer;
+    text-decoration: underline;
+}
+.github-logo{
+    width: 2%;
+}
+
+@media (min-width: 320px) and (max-width: 430px) {
+   .left-bunny{
+    width: 10%;
+   } 
+   .right-bunny{
+    width: 10%;
+   }
+   .boy-girl-gifs{
+    padding-top: 50%;
+    padding-bottom: 10%;
+   }
+   .boy-girl-gifs p{
+    margin-top: 10%;
+   }
+   .yes-button,.no-button{
+    min-width: 15vw;
+    min-height: 3vh;
+    font-size: 2vw;
+   }
+   .create-new-invite{
+    font-size: 4vw;
+   }
+   .github-logo{
+    width: 5%;
+   }
+   
 }
 
 
