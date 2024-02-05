@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import ColorPicker from "../colorPicker";
 import "../HomePage/homePage.modules.css";
+import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 const BASE_URL = "https://valentine-ybw3.onrender.com";
 const client_URL = "https://valentine-rexp.vercel.app";
-
 
 function HomePage() {
   const [valentineDetails, setValentineDetails] = useState({
@@ -14,10 +14,9 @@ function HomePage() {
   });
 
   const [customLink, setCustomLink] = useState("");
-
   const [selectThemeOpen, setSelectThemeOpen] = useState(false);
   const [showCustomLink, setShowCustomLink] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const colorPickerRef = useRef(null);
 
   useEffect(() => {
@@ -71,6 +70,7 @@ function HomePage() {
   };
 
   const handleDetailsFormSubmit = async (event) => {
+    setLoading((prev) => !prev);
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -79,6 +79,7 @@ function HomePage() {
       );
       if ((response.data.message = "New user saved successful")) {
         setCustomLink(`${client_URL}/${response.data.details}`);
+        setLoading((prev) => !prev);
         window.alert("Your link is getting ready");
         setShowCustomLink((prev) => !prev);
         setValentineDetails({
@@ -93,51 +94,65 @@ function HomePage() {
   return (
     <div className="homepage-component">
       <h1>ValenInvite</h1>
+
       {!showCustomLink && (
         <div className="homepage">
-          <form method="POST" onSubmit={handleDetailsFormSubmit}>
-            <div className="valentine-details">
-              <input
-                className="valentine-name"
-                required
-                type="text"
-                name="name"
-                value={valentineDetails.name}
-                onChange={handleValentineDetailsInputChange}
-                placeholder="Enter your valentine name"
-              ></input>
-              <input
-                className="valentine-pickup-line"
-                required
-                type="text"
-                name="pickupLine"
-                value={valentineDetails.pickupLine}
-                onChange={handleValentineDetailsInputChange}
-                placeholder="Enter your pickup line"
-              ></input>
-              <input
-                style={{ background: valentineDetails.pageColor }}
-                className="valentine-page-theme"
-                required
-                type="text"
-                name="pageColor"
-                value={valentineDetails.pageColor}
-                onChange={handleValentineDetailsInputChange}
-                placeholder="Enter color code from select theme"
-              ></input>
-            </div>
-            <div className="button-div">
-              <button
-                onClick={handleThemeButtonClick}
-                className="theme-details-button"
-              >
-                SELECT THEME
-              </button>
-              <button type="submit" className="submit-details-button">
-                SUBMIT
-              </button>
-            </div>
-          </form>
+          {loading ? (
+            <Spinner
+              className="spinner"
+              size="xl"
+              w={20}
+              h={20}
+              alignSelf="center"
+              margin="auto"
+            />
+          ) : (
+            <>
+              <form method="POST" onSubmit={handleDetailsFormSubmit}>
+                <div className="valentine-details">
+                  <input
+                    className="valentine-name"
+                    required
+                    type="text"
+                    name="name"
+                    value={valentineDetails.name}
+                    onChange={handleValentineDetailsInputChange}
+                    placeholder="Enter your valentine name"
+                  ></input>
+                  <input
+                    className="valentine-pickup-line"
+                    required
+                    type="text"
+                    name="pickupLine"
+                    value={valentineDetails.pickupLine}
+                    onChange={handleValentineDetailsInputChange}
+                    placeholder="Enter your pickup line"
+                  ></input>
+                  <input
+                    style={{ background: valentineDetails.pageColor }}
+                    className="valentine-page-theme"
+                    required
+                    type="text"
+                    name="pageColor"
+                    value={valentineDetails.pageColor}
+                    onChange={handleValentineDetailsInputChange}
+                    placeholder="Enter color code from select theme"
+                  ></input>
+                </div>
+                <div className="button-div">
+                  <button
+                    onClick={handleThemeButtonClick}
+                    className="theme-details-button"
+                  >
+                    SELECT THEME
+                  </button>
+                  <button type="submit" className="submit-details-button">
+                    SUBMIT
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       )}
 
