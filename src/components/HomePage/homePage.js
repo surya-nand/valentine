@@ -17,6 +17,7 @@ function HomePage() {
   const [selectThemeOpen, setSelectThemeOpen] = useState(false);
   const [showCustomLink, setShowCustomLink] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState('')
   const colorPickerRef = useRef(null);
 
   useEffect(() => {
@@ -71,6 +72,7 @@ function HomePage() {
 
   const handleDetailsFormSubmit = async (event) => {
     setLoading((prev) => !prev);
+    setName(valentineDetails.name)
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -164,9 +166,10 @@ function HomePage() {
       {showCustomLink && (
         <div className="custom-link-container">
           <p>{customLink}</p>
-          <h1 onClick={() => handleCopyToClipboard(customLink)}>
-            click here to share
-          </h1>
+          <h2 onClick={() => handleCopyToClipboard(customLink)}>
+            Click here to copy
+          </h2>
+          <h1>{`Link is ready to share with ${name}`}</h1>
         </div>
       )}
     </div>
